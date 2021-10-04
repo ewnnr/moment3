@@ -1,0 +1,58 @@
+//Importerar typsnitt
+@import url(https://fonts.googleapis.com/css?family=Ephesis:regular);
+@import url(https://fonts.googleapis.com/css?family=Bebas+Neue:regular);
+//Färgsvhema med 3 färger, en basfärg som sedan finns som ljusare och mörkare. 
+$basecolor: #ccc9c4;
+$darker: darken($basecolor, 50%);
+$light: lighten($basecolor, 15%);
+//Variabler för de typsnitt som ska användas.
+$decorfont: Ephesis;
+$textfont: Arial;
+$menufont: Bebas Neue;
+//Mixin för bilder
+@mixin images {
+    width: 70%;
+    display: block;
+    margin: auto;
+    border-radius: 50%;
+    border: $darker 2px solid;
+}
+
+//Mixin för h1 rubrik
+@mixin h1 {
+    font-family: $decorfont;
+    color: black;
+    text-align: center;
+    font-size: 80px;
+    width: 90%;
+    margin: auto;
+    background: linear-gradient( to bottom, $basecolor, $light 50%, $basecolor 50%, $light);
+    background-size: 100% 20px;
+    padding: 0.5%;
+}
+
+//Mixin för h2 rubrik
+@mixin h2 {
+    font-family: $decorfont;
+    color: black;
+    font-size: 40px;
+}
+
+//Mixins för mediaqueries, innehållandes en if else sats. Här anges storlekarna för breakpoints. 
+@mixin bp($point) {
+    @if $point==screen-max {
+        @media (max-width: 1600px) {
+            @content;
+        }
+    }
+    @else if $point==screen-medium {
+        @media (max-width: 1250px) {
+            @content;
+        }
+    }
+    @else if $point==screen-min {
+        @media (max-width: 600px) {
+            @content;
+        }
+    }
+}
